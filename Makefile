@@ -1,8 +1,9 @@
-FILE="mandelbrot.f90"
-OFILE="mandelbrot"
+FILE="src/mandelbrot.f90"
+OFILE="bin/mandelbrot"
 all:
-	clear
+	mkdir bin
 	ifort $(FILE) -o $(OFILE)
-	./$(OFILE)
 plot: 
-	./mandelbrot | tr -d "(" | tr -d ")" | tr "," " " | gnuplot -p -e "plot '<cat' with points pointtype 5 pointsize .05" 
+	./bin/mandelbrot | tr -d "(" | tr -d ")" | tr "," " " | gnuplot -p -e "plot '<cat' with points pointtype 5 pointsize .05" 
+clean: 
+	-rm -rf bin 
